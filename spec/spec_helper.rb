@@ -2,6 +2,8 @@
 
 require 'simplecov'
 
+require_relative '../config/environment'
+
 SimpleCov.start do
   add_filter 'spec/'
 end
