@@ -1,0 +1,8 @@
+/.config
+/.idea
+/coverage/
+/spec/reports/
+/spec/examples.txt
+/.bundle/
+/vendor/bundle
+/lib/bundler/man/
