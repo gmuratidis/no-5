@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '~> 3.3.1'
 
+gem 'i18n', '~> 1.14'
 gem 'zeitwerk', '~> 2.7'
 
 group :development, :test do

@@ -1,0 +1,3 @@
+en:
+  errors:
+    not_implemented: "%{klass} must implement %{method}"
