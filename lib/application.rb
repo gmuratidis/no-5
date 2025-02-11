@@ -4,17 +4,29 @@ class Application
   def initialize(stdin, stdout)
     @stdin = stdin
     @stdout = stdout
+
+    @context = {
+      robot: nil,
+      stdout:,
+      table: nil
+    }
   end
 
   def start
     while (input = prompt)
-      break if input == 'EXIT'
+      next unless (command, args = InputParser.parse(input))
+
+      begin
+        command.run *args, **context
+      rescue ApplicationError => e
+        stdout.puts e.message
+      end
     end
   end
 
   private
 
-  attr_reader :stdin, :stdout
+  attr_reader :context, :stdin, :stdout
 
   def prompt
     stdout.print "#{I18n.t 'feedback.prompt'} "

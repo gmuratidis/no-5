@@ -1,9 +1,14 @@
 # frozen_string_literal: true
 
 class InputParser
+  COMMAND_STRING_PATTERN = /(\w+)(\s.+)?/
+  WHITESPACE_PATTERN = /\s/
+
+  private_constant :COMMAND_STRING_PATTERN, :WHITESPACE_PATTERN
+
   class << self
     def parse(input)
-      return nil if input.nil? || input.empty?
+      return nil if blank? input
 
       command, *args = explode input
 
@@ -23,19 +28,23 @@ class InputParser
     end
 
     def explode(input)
-      command, rest = input.upcase.match(/(\w+)(\s.+)?/)&.captures
+      command, rest = input.upcase.match(COMMAND_STRING_PATTERN)&.captures
 
       [command, *extract_args(rest)]
     end
 
     def extract_args(input)
-      return [] if input.nil? || input.empty?
+      return [] if blank? input
 
-      input.gsub(/\s/, '').split(',').collect do |arg|
+      input.gsub(WHITESPACE_PATTERN, '').split(',').collect do |arg|
         int_arg = arg.to_i
 
         int_arg.to_s == arg ? int_arg : arg
       end
+    end
+
+    def blank?(input)
+      input.nil? || input.empty?
     end
   end
 end

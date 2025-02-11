@@ -1,4 +1,6 @@
 en:
   errors:
+    argument_count: Incorrect argument count, try 'HELP'
     invalid_command: "%{input} is not a valid command, try 'HELP'"
+    not_an_integer: "%{arg} must be an integer"
     not_implemented: "%{klass} must implement %{method}"
