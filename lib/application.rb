@@ -7,12 +7,20 @@ class Application
   end
 
   def start
-    puts 'Success'
+    while (input = prompt) do
+      break if input == 'EXIT'
+    end
   end
 
   private
 
   attr_reader :stdin, :stdout
+
+  def prompt
+    stdout.print I18n.t('feedback.prompt') + ' '
+
+    stdin.gets.chomp
+  end
 
   private_class_method :new
 
