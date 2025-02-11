@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative 'command_parser'
+
 class Application
   def initialize(stdin, stdout)
     @stdin = stdin
@@ -7,7 +9,9 @@ class Application
   end
 
   def start
-    puts 'Success'
+    @stdout.puts 'Please enter a command:'
+    command_parser = CommandParser.new(@stdin.gets.chomp, @stdout)
+    # puts 'Success'
   end
 
   private
