@@ -7,7 +7,7 @@ class Application
   end
 
   def start
-    while (input = prompt) do
+    while (input = prompt)
       break if input == 'EXIT'
     end
   end
@@ -17,7 +17,7 @@ class Application
   attr_reader :stdin, :stdout
 
   def prompt
-    stdout.print I18n.t('feedback.prompt') + ' '
+    stdout.print "#{I18n.t 'feedback.prompt'} "
 
     stdin.gets.chomp
   end

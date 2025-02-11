@@ -1,3 +1,4 @@
 en:
   errors:
+    invalid_command: "%{input} is not a valid command, try 'HELP'"
     not_implemented: "%{klass} must implement %{method}"
